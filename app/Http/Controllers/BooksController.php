@@ -16,6 +16,7 @@ class BooksController extends Controller
      */
     public function index()
     {
+        //return BooksResource::collection(Book::paginate(10));
         return BooksResource::collection(Book::all());
     }
 

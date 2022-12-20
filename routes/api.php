@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+// without Auth
+Route::apiResource('/books', BooksController::class); 
+// End without Auth
 
 Route::middleware('auth:api')->prefix('v1')->group(function(){
 
