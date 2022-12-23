@@ -38,13 +38,25 @@ class BooksController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        $faker = \Faker\Factory::create(1);
-        $book = Book::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'publication_year' => (string)$faker->year
-        ]);
-        return new BooksResource($book);
+        try {
+
+            $faker = \Faker\Factory::create(1);
+            $book = Book::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'publication_year' => (string)$faker->year
+            ]);
+
+            return response()->json([
+                'book' => new BooksResource($book),
+                'message' => 'Book Created Successfully!!'
+            ]);
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'Something goes wrong while creating a Book!!'
+            ], 500);
+        }
     }
 
     /**
