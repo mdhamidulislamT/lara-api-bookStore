@@ -27,10 +27,6 @@ Route::middleware('auth:api')->prefix('v1')->group(function(){
         return $request->user();
     });
 
-    /* 
-    Route::get('/authors/{author}', [AuthorsController::class, 'show']);  // authors/{author}  =>For one specific author
-    Route::get('/authors', [AuthorsController::class, 'index']); // authors/{author}  =>For all Authors
-     */
     Route::apiResource('/authors', AuthorsController::class);
     Route::apiResource('/books', BooksController::class);
     Route::apiResource('/students', StudentController::class);
