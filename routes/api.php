@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // without Auth
-Route::apiResource('/books', BooksController::class); 
+/* Route::apiResource('/books', BooksController::class); 
+Route::apiResource('/user/report', UserReportController::class);  */
 // End without Auth
 
 Route::middleware('auth:api')->prefix('v1')->group(function(){
